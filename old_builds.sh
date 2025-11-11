@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ls -lrt | awk -F " " 'NR>1 {print $NF}' > output
+total=`cat output | wc -l`
+echo "Enter the number files to retain"
+read count
+value=`expr $total - $count`
+head -$value output
+
